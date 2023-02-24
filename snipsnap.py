@@ -8,7 +8,7 @@ import subprocess
 
 # Create directory to store the screenshots. Directory name is based on the date and time
 directory = time.strftime("%Y-%m-%d_%H-%M-%S")
-os.makedirs("problem_steps/" + directory)
+os.makedirs("snapshots/" + directory)
 
 # Define function to capture a screenshot of the active window
 def capture_screenshot():
@@ -24,8 +24,8 @@ def capture_screenshot():
     # Extracts width and height of the active window by splitting the output of the xwininfo. Extracts values from width and height labels
     width, height = int(geometry.split('Width:')[1].split('\n')[0]), int(geometry.split('Height:')[1].split('\n')[0])
 
-    # Capture a screenshot of the active window using imagemagick. Save image as "step<incremented number>.png" under a directory within a folder named "problem_steps".
-    subprocess.run(['import', '-window', active_window_id, '-frame', f'problem_steps/{directory}/step{len(os.listdir("problem_steps/" + directory)) + 1}.png'])
+    # Capture a screenshot of the active window using imagemagick. Save image as "step<incremented number>.png" under a directory within a folder named "snapshots".
+    subprocess.run(['import', '-window', active_window_id, '-frame', f'snapshots/{directory}/step{len(os.listdir("snapshots/" + directory)) + 1}.png'])
 
 # Define a function to handle key presses
 def on_press(key):
