@@ -1,0 +1,13 @@
+#check if the keyfile exists
+        if(key_path):
+            with open("keylog.txt", "r") as f:
+                logged_key = f.read()
+                if logged_key == key:
+                    #capture_screenshot()
+                    print("It is!")
+                else:
+                    print("You should press: ",logged_key)
+        
+        #store keycode to txt file
+        with open("keylog.txt", "w", encoding="utf-8") as f:
+            f.write('{0}'.format(key))
